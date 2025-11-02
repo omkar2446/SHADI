@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DreamDay Weddings | Event Management</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Global ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background: linear-gradient(135deg, #fff0f5 0%, #ffe5ec 50%, #fffafc 100%);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    /* Add subtle floral overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://www.transparenttextures.com/patterns/white-floral.png');
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)),
+        url('https://images.unsplash.com/photo-1529634897288-38ad26f3a1e2?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      text-align: center;
+      padding: 140px 20px;
+      overflow: hidden;
+    }
+
+    header::after {
+      /* Shimmer overlay */
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 100%);
+      transform: skewX(-25deg);
+      animation: shimmer 8s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    header h1 {
+      font-size: 3.8em;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      animation: fadeIn 2s ease-in;
+      z-index: 1;
+      position: relative;
+    }
+
+    header p {
+      font-size: 1.3em;
+      opacity: 0.9;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- Navigation ---------- */
+    nav {
+      background: rgba(181, 101, 118, 0.95);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd9e2;
+      transform: scale(1.1);
+    }
+
+    /* ---------- Section Styles ---------- */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      color: #b56576;
+      font-size: 2.4em;
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: #b56576;
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    p {
+      max-width: 750px;
+      margin: auto;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* ---------- Service Cards ---------- */
+    .service-category {
+      max-width: 950px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      padding: 40px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .service-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .service-category h3 {
+      font-size: 1.8em;
+      color: #a34f63;
+      margin-bottom: 15px;
+    }
+
+    .service-category h4 {
+      margin-top: 20px;
+      color: #b56576;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin: 10px 0 10px 25px;
+      color: #444;
+    }
+
+    /* ---------- Contact Section ---------- */
+    .contact {
+      background: linear-gradient(135deg, #ffe5ec 0%, #fff0f5 100%);
+      padding: 80px 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      animation: fadeUp 1.5s ease;
+    }
+
+    input, textarea {
+      padding: 14px;
+      border: 2px solid #f1c6d3;
+      border-radius: 8px;
+      font-size: 1em;
+      background: #fff;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #b56576;
+      outline: none;
+    }
+
+    button {
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #b56576;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #a34f63;
+      transform: scale(1.05);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: #b56576;
+      color: #fff;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 0.9em;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- Animations ---------- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+
+      .service-category {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>DreamDay Weddings</h1>
+    <p>We make your dream wedding come true ✨</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      At <strong>DreamDay Weddings</strong>, we create experiences that capture your heart. From fairytale décor to flawless event management,
+      our team turns your vision into a breathtaking reality — because your love story deserves nothing less than perfection.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+
+    <div class="service-category">
+      <h3>👗 Costume Design</h3>
+      <h4>For the Bride:</h4>
+      <ul>
+        <li>Bridal Lehengas & Designer Gowns</li>
+        <li>Saree Styling & Accessory Coordination</li>
+      </ul>
+      <h4>For the Groom:</h4>
+      <ul>
+        <li>Sherwanis, Tuxedos & Indo-Western Suits</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <h3>🌺 Decorations</h3>
+      <h4>Wedding Themes:</h4>
+      <ul>
+        <li>Royal Palace, Floral Garden, Beachside, Bohemian Chic</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <h3>📸 Photography & Videography</h3>
+      <ul>
+        <li>Candid Photography, Drone Shots, and Cinematic Films</li>
+        <li>Pre-Wedding & Same-Day Edits</li>
+      </ul>
+    </div>
+
+    <div class="service-category">
+      <h3>🥂 Guest Management</h3>
+      <ul>
+        <li>Invitations, Travel, Seating, & Hospitality Coordination</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+   <form id="contactForm">
+  <input name="name" type="text" placeholder="Your Name" required>
+  <input name="email" type="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send</button>
+  
+<div id="success" class="msg success">✅ Message sent successfully!</div>
+<div id="error" class="msg error">❌ Something went wrong. Try again.</div>
+
+</form>
+  </section>
+
+  <footer>
+    <p>© 2025 DreamDay Weddings | Crafted with 💖 for your forever memories</p>
+  </footer>
+...
+
+
+<!-- JavaScript -->
+<script>
+  // Replace with your own deployed Google Apps Script URL
+  const scriptURL = "https://script.google.com/macros/s/AKfycbziWGQuwqqPlN5qkS3lDhBx10qwijUyqpurpCFz6BroaC2eFj8r4w0Q9qYkq7JxN_mC/exec";
+
+  // Get form and message elements
+  const form = document.getElementById('contactForm');
+  const successEl = document.getElementById('success');
+  const errorEl = document.getElementById('error');
+
+  // Form submit event
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Hide messages before sending
+    successEl.style.display = 'none';
+    errorEl.style.display = 'none';
+
+    // Send form data to Google Apps Script
+    fetch(scriptURL, {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(response => response.text())
+    .then(text => {
+      try {
+        const result = JSON.parse(text);
+        if (result.status === 'success') {
+          // ✅ Show success message
+          successEl.style.display = 'block';
+          form.reset();
+          setTimeout(() => successEl.style.display = 'none', 4000);
+        } else {
+          // ❌ Show server error
+          console.error('Server error:', result);
+          errorEl.style.display = 'block';
+          setTimeout(() => errorEl.style.display = 'none', 5000);
+        }
+      } catch (err) {
+        // If not JSON, just show generic error
+        console.error('Parse error:', text);
+        errorEl.style.display = 'block';
+        setTimeout(() => errorEl.style.display = 'none', 5000);
+      }
+    })
+    .catch(err => {
+      // ❌ Network or permission error
+      console.error('Network error:', err);
+      errorEl.style.display = 'block';
+      setTimeout(() => errorEl.style.display = 'none', 5000);
+    });
+  });
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
+
+
